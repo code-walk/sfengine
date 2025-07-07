@@ -1,0 +1,49 @@
+services:
+  # Сервис точки входа в приложение и роутинга
+  nginx:
+    container_name: sfengine-nginx
+    image: nginx:alpine3.20
+    volumes:
+      - './services/nginx/logs/error.log:/var/log/nginx/error.log' # Общие логи
+      - './services/nginx/logs/access.log:/var/log/nginx/access.log' # Логи запросов
+      - './services/nginx/nginx.conf:/etc/nginx/nginx.conf:ro' # Основная конфигурация
+      - './services/nginx/conf.d:/etc/nginx/conf.d:ro' # Дополнительная конфигурация
+      - './services/nginx/html:/usr/share/nginx/html:ro' # Обслуживание файлов статики
+    ports:
+      - '8080:80'
+    networks:
+      - public
+      - private
+    depends_on:
+      - nodered
+  # Сервис центральной логики и обслуживания клиентских запросов, поставка API
+  nodered:
+    container_name: sfengine-nodered
+    image: nodered/node-red:4.0.8-22-minimal
+    volumes:
+      - './services/nodered/data:/data' # Конфигурация
+    expose:
+      - '1880'
+    networks:
+      - private
+  # Сервис API для БД
+  strapi:
+    container_name: sfengine-strapi
+    build:
+      context: './services/strapi'
+      dockerfile: './Dockerfile'
+    volumes:
+      - ./services/strapi/config:/opt/app/config
+      - ./services/strapi/src:/opt/app/src
+      - ./services/strapi/package.json:/opt/package.json
+      - ./services/strapi/package-lock.json:/opt/package-lock.json
+      - ./services/strapi/.env:/opt/app/.env
+      - ./services/strapi/public/uploads:/opt/app/public/uploads
+      - ./services/strapi/.tmp/data.db:/opt/app/.tmp/data.db
+    ports:
+      - '1337:1337' # Загрузка статики админки
+      - '5173:5173' # Запросы к админке API, делает сама админка
+networks:
+  public:
+  private:
+    internal: true

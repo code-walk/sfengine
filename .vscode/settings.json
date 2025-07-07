@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "ви",
+            "database": "${workspaceFolder:sfengine}/services/strapi/.tmp/data.db"
+        }
+    ]
+}

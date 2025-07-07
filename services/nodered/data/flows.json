@@ -1,0 +1,55 @@
+[
+    {
+        "id": "c6242562aceef820",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e903747bc210090f",
+        "type": "http in",
+        "z": "c6242562aceef820",
+        "name": "",
+        "url": "/api/test",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 220,
+        "wires": [
+            [
+                "b7fc35c08e2017e0",
+                "0be5c0c198dca089"
+            ]
+        ]
+    },
+    {
+        "id": "b7fc35c08e2017e0",
+        "type": "http response",
+        "z": "c6242562aceef820",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 420,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0be5c0c198dca089",
+        "type": "debug",
+        "z": "c6242562aceef820",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 120,
+        "wires": []
+    }
+]
