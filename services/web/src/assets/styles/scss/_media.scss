@@ -1,0 +1,57 @@
+$xxs: 320;
+$xs: 360;
+$sm: 425;
+$md: 768;
+$lg: 1024;
+$xl: 1280;
+$xxl: 1440;
+$xxxl: 2560;
+$fluid: 95%;
+
+@mixin lt($bp) {
+  @media (max-width: #{$bp - 1}px) {
+    @content;
+  }
+}
+
+@mixin lte($bp) {
+  @media (max-width: #{$bp}px) {
+    @content;
+  }
+}
+
+@mixin gt($bp) {
+  @media (min-width: #{$bp + 1}px) {
+    @content;
+  }
+}
+
+@mixin gte($bp) {
+  @media (min-width: #{$bp}px) {
+    @content;
+  }
+}
+
+@mixin inRange($min, $max) {
+  @media (min-width: #{$min + 1}px) and (max-width: #{$max - 1}px) {
+    @content;
+  }
+}
+
+@mixin inRangeEq($min, $max) {
+  @media (min-width: #{$min}px) and (max-width: #{$max}px) {
+    @content;
+  }
+}
+
+@mixin outRange($min, $max) {
+  @media (max-width: #{$min - 1}px) or (min-width: #{$max + 1}px) {
+    @content;
+  }
+}
+
+@mixin outRangeEq($min, $max) {
+  @media (max-width: #{$min}px) or (min-width: #{$max}px) {
+    @content;
+  }
+}

@@ -6,12 +6,12 @@
 
 - Выполните `make dev` чтобы поднять среду разработки
 - Перейдите на http://127.0.0.1:8080 чтобы открыть основную страницу сайта
-- Перейдите на http://127.0.0.1:8080/admin/nodered/ui чтобы открыть управление Gateway
-- Выполняйте запросы по адресу http://127.0.0.1:8080/api/* чтобы обращаться к API
+- Выполняйте запросы по адресу http://127.0.0.1:8080/api/* чтобы обращаться к API NodeRED
 
-Strapi: http://localhost:1337/admin
-admin@strifefox.pro
-StrifeFox0
+- NodeRED UI: http://localhost:1880
+- Strapi UI: http://localhost:1337
+  - Login: `admin@strifefox.pro`
+  - Pass: `StrifeFox0`
 
 ## Архитектура
 

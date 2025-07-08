@@ -1,3 +1,4 @@
+# TODO: Следует исключить все public сети во всех сервисах кроме nginx для обеспечения безопасности!
 services:
   # Сервис точки входа в приложение и роутинга
   nginx:
@@ -16,6 +17,17 @@ services:
       - private
     depends_on:
       - nodered
+  # Сервис FrontEnd
+  web:
+    container_name: sfengine-web
+    build: services/web
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    networks:
+      - private
+      - public
   # Сервис центральной логики и обслуживания клиентских запросов, поставка API
   nodered:
     container_name: sfengine-nodered
@@ -24,8 +36,11 @@ services:
       - './services/nodered/data:/data' # Конфигурация
     expose:
       - '1880'
+    ports:
+      - '1880:1880'
     networks:
       - private
+      - public
   # Сервис API для БД
   strapi:
     container_name: sfengine-strapi
@@ -40,9 +55,15 @@ services:
       - ./services/strapi/.env:/opt/app/.env
       - ./services/strapi/public/uploads:/opt/app/public/uploads
       - ./services/strapi/.tmp/data.db:/opt/app/.tmp/data.db
+    expose:
+      - '1337'
+      - '5173'
     ports:
       - '1337:1337' # Загрузка статики админки
       - '5173:5173' # Запросы к админке API, делает сама админка
+    networks:
+      - private
+      - public
 networks:
   public:
   private:

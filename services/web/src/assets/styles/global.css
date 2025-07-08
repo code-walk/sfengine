@@ -1,0 +1,143 @@
+@import url(./css/_reset.css);
+@import url(./css/_fonts.css);
+@import url(./css/_keyframes.css);
+@import url(./css/_transition.css);
+
+:root {
+  --container-indent: 15px;
+
+  --container-width-xxs: calc(320px + calc(var(--container-indent) * 2));
+  --container-width-xs: calc(360px + calc(var(--container-indent) * 2));
+  --container-width-sm: calc(425px + calc(var(--container-indent) * 2));
+  --container-width-md: calc(768px + calc(var(--container-indent) * 2));
+  --container-width-lg: calc(1160px + calc(var(--container-indent) * 2));
+  --container-width-xl: calc(1280px + calc(var(--container-indent) * 2));
+  --container-width-xxl: calc(1400px + calc(var(--container-indent) * 2));
+  --container-width-xxxl: calc(2560px + calc(var(--container-indent) * 2));
+  --container-fluid: 100%;
+
+  /** Colors */
+  --color-primary-300: #0a0a0a;
+  --color-primary-200: #1a1a1a;
+  --color-primary-100: #89898c;
+  --color-primary-50: #b9b9b9;
+  --color-primary-20: #f0f1f1;
+  --color-primary-10: #ffffff;
+
+  --color-secondary-200: #d0d0d0;
+  --color-secondary-100: #e2e2e2;
+
+  --color-accent-200: #9bb260;
+  --color-accent-100: #8faa4e;
+  --color-error: #d93333;
+
+  --color-background: #ebebeb;
+  --color-surface: var(--color-primary-10);
+
+  --shine-gradient: linear-gradient(
+    to left,
+    rgb(255 255 255 / 0%) 0,
+    rgb(255 255 255 / 30%) 50%,
+    rgb(255 255 255 / 0%) 100%
+  );
+
+  /** Fonts */
+  --font-family-primary: 'Muller', sans-serif;
+  --font-family-secondary: 'Harpseal', sans-serif;
+
+  --font-size-xs: 10px;
+  --font-size-s: 12px;
+  --font-size-sm: 14px;
+  --font-size-m: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+  --font-size-lx: 40px;
+  --font-size-xl: 56px;
+
+  /** Spacings */
+  --spacing-2xs: 2px;
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-sm: 12px;
+  --spacing-m: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+  --spacing-xl: 60px;
+  --spacing-2xl: 67px;
+  --spacing-3xl: 90px;
+  --spacing-4xl: 100px;
+  --spacing-5xl: 90px;
+
+  /** Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 10px;
+
+  /** Sizes */
+  --header-height: 88px;
+  --footer-height: min-height(303px);
+
+  /** Transtions */
+  --transition: 0.3s;
+  --transition-hover: var(--transition, 0.3s);
+  --transition-page: 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --font-size-xs: 10px;
+    --font-size-s: 12px;
+    --font-size-sm: 12px;
+    --font-size-m: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 20px;
+    --font-size-lx: 30px;
+    --font-size-xl: 40px;
+
+    --spacing-2xs: 2px;
+    --spacing-xs: 4px;
+    --spacing-s: 8px;
+    --spacing-sm: 12px;
+    --spacing-m: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+    --spacing-2xl: 67px;
+    --spacing-3xl: 40px;
+    --spacing-4xl: 50px;
+    --spacing-5xl: 60px;
+
+    --header-height: 64px;
+    --footer-height: auto;
+    --container-indent: 10px;
+  }
+}
+
+html {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-primary-100);
+  background-color: var(--color-primary-10);
+  transition: var(--transition);
+  /* scroll-behavior: smooth; */
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100svh;
+
+  @supports not (min-height: 100svh) {
+    min-height: 100vh;
+  }
+}
+
+.text-accent {
+  font-weight: 500;
+  color: var(--color-accent-200);
+}
